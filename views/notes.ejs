@@ -1,0 +1,37 @@
+<%- include('includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+    </head>
+
+    <body>
+        <%- include('includes/navigation.ejs') %>
+
+            <main>
+                <% if (notes.length > 0) { %>
+                    <div class="grid">
+                        <% for (let note of notes) { %>
+                            <article class="card product-item">
+                                <header class="card__header">
+                                    <h1 class="product__title">
+                                        <%= note.title %>
+                                    </h1>
+                                </header>
+                                <div class="card__content">
+                                    <p class="product__description">
+                                        <%= note.description %>
+                                    </p>
+                                </div>
+                                <div class="card__actions">
+                                    <a href="edit-note/<%= note._id %>?edit=true" class="btn">Edit</a>
+                                    <form action="/user/delete-note" method="POST">
+                                        <input type="hidden" value="<%= note._id %>" name="noteId">
+                                        <button class="btn" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </article>
+                            <% } %>
+                    </div>
+                    <% } else { %>
+                        <h1>No Notes Found!</h1>
+                        <% } %>
+            </main>
+            <%- include('includes/end.ejs') %>
