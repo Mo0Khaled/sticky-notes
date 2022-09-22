@@ -10,5 +10,10 @@ router.get("/edit-note/:noteId", userController.getEditNote);
 
 router.post("/edit-note", userController.postEditNote);
 
-router.post("/delete-note",userController.postDeleteNote)
+router.post("/delete-note",userController.postDeleteNote);
+
+router.get("/add-collection",userController.getAddCollection)
+
+router.post("/add-collection",userController.postAddCollection)
+
 exports.routes = router;

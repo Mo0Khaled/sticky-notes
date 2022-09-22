@@ -1,0 +1,21 @@
+<%- include('../includes/head.ejs') %>
+
+</head>
+
+<body>
+   <%- include('../includes/navigation.ejs') %>
+
+    <main>
+        <form action="/collection/<% if (editing) { %>edit-collection<% } else { %>add-collection<% } %>" method="POST">
+            <div>
+                <label for="title">Title</label>
+                <input type="text" name="title" id="title" value="<% if (editing) { %><%= collection.title %><% } %>">
+            </div>
+            <% if (editing) { %>
+                <input type="hidden" value="<%= collection._id %>" name="noteId">
+            <% } %>
+
+            <button class="btn" type="submit"><% if (editing) { %>Update collection<% } else { %>Add collection<% } %></button>
+        </form>
+    </main>
+<%- include('../includes/end.ejs') %>

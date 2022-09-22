@@ -1,4 +1,5 @@
 const Note = require("../models/note-model");
+const Collection = require("../models/collection-model");
 
 exports.getAddNote = (req,res,next)=>{
     res.render("edit-note", {
@@ -93,4 +94,23 @@ exports.getNotes = (req,res,next)=>{
   .catch((error) => console.log(error));
 
   
+}
+
+exports.getAddCollection = (req,res,next)=>{
+  const editMode = req.params.edit;
+ Collection.find().then(collections=>{
+  res.render("add-to-collection", {
+    pageTitle: "Add To Collection",
+    path:"/",
+    collections: collections,
+    editing: editMode,
+  });
+ })
+}
+
+exports.postAddCollection = (req,res,next)=>{
+  res.render("add-to-collection", {
+    pageTitle: "Add To Collection",
+    path:"/",
+  });
 }

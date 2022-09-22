@@ -1,0 +1,37 @@
+<%- include('../includes/head.ejs') %>
+    <link rel="stylesheet" href="/css/product.css">
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+
+            <main>
+                <% if (collections.length > 0) { %>
+                    <div class="grid">
+                        <% for (let collection of collections) { %>
+                            <article class="card product-item">
+                                <header class="card__header">
+                                    <h1 class="product__title">
+                                        <%= collection.title %>
+                                    </h1>
+                                </header>
+                                <div class="card__actions">
+                                    <a href="/collection/<%= collection._id %>" class="btn">Details</a>
+                                    <a href="/collection/edit-collection/<%= collection._id %>?edit=true" class="btn">Edit</a>
+                                  
+                                    <form action="/collection/delete-collection" method="POST">
+                                        <input type="hidden" value="<%= collection._id %>" name="collectionId">
+                                        <button class="btn" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                                <div class="card__actions">
+                                    <a href="/user/add-collection?edit=true" class="btn">Add To Collection</a>
+                                </div>
+                            </article>
+                            <% } %>
+                    </div>
+                    <% } else { %>
+                        <h1>No Collections Found!</h1>
+                        <% } %>
+            </main>
+            <%- include('../includes/end.ejs') %>

@@ -1,0 +1,16 @@
+<%- include('../includes/head.ejs') %>
+    </head>
+
+    <body>
+        <%- include('../includes/navigation.ejs') %>
+        <main class="centered">
+            <h1><%= collection.title %></h1>
+            <hr>
+            <ul>
+                <% collection.notes.forEach(item => { %>
+                    <li class="orders_products-item"><%= item.note.title %> </li>
+                    <li class="orders_products-item"><%= item.note.description %>)</li>
+                    <% }); %>
+            </ul>
+        </main>
+        <%- include('../includes/end.ejs') %>

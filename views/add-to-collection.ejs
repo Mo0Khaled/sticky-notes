@@ -1,0 +1,25 @@
+<%- include('includes/head.ejs') %>
+
+</head>
+
+<body>
+   <%- include('includes/navigation.ejs') %>
+
+    <main>
+        <form action="/user/<% if (editing) { %>edit-collection<% } else { %>add-collection<% } %>" method="POST">
+            <select name="collection" id="collection">
+                <% collections.forEach(item => { %>
+                  
+                
+                    <option value="<%= item._id %>"><%= item.title %></option>
+            
+                    <% }); %>
+              </select>
+            <% if (editing) { %>
+                <input type="hidden" value="<%= collection._id %>" name="collectionId">
+            <% } %>
+
+            <button class="btn" type="submit"><% if (editing) { %>Update Collection<% } else { %>Add Collection<% } %></button>
+        </form>
+    </main>
+<%- include('includes/end.ejs') %>
