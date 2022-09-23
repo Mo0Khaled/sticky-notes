@@ -8,8 +8,8 @@
             <hr>
             <ul>
                 <% collection.notes.forEach(item => { %>
-                    <li class="orders_products-item"><%= item.note.title %> </li>
-                    <li class="orders_products-item"><%= item.note.description %>)</li>
+                    <li class="orders_products-item">Title: <%= item.note.title %> </li>
+                    <li class="orders_products-item">Description: <%= item.note.description %></li>
                     <% }); %>
             </ul>
         </main>

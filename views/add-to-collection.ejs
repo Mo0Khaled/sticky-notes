@@ -15,9 +15,9 @@
             
                     <% }); %>
               </select>
-            <% if (editing) { %>
-                <input type="hidden" value="<%= collection._id %>" name="collectionId">
-            <% } %>
+          
+                <input type="hidden" value="<%= noteId %>" name="noteId">
+          
 
             <button class="btn" type="submit"><% if (editing) { %>Update Collection<% } else { %>Add Collection<% } %></button>
         </form>

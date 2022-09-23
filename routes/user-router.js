@@ -12,7 +12,7 @@ router.post("/edit-note", userController.postEditNote);
 
 router.post("/delete-note",userController.postDeleteNote);
 
-router.get("/add-collection",userController.getAddCollection)
+router.get("/add-collection/:noteId",userController.getAddCollection)
 
 router.post("/add-collection",userController.postAddCollection)
 

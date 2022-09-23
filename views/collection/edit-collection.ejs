@@ -12,7 +12,7 @@
                 <input type="text" name="title" id="title" value="<% if (editing) { %><%= collection.title %><% } %>">
             </div>
             <% if (editing) { %>
-                <input type="hidden" value="<%= collection._id %>" name="noteId">
+                <input type="hidden" value="<%= collection._id %>" name="collectionId">
             <% } %>
 
             <button class="btn" type="submit"><% if (editing) { %>Update collection<% } else { %>Add collection<% } %></button>

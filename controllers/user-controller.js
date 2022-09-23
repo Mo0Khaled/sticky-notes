@@ -98,19 +98,32 @@ exports.getNotes = (req,res,next)=>{
 
 exports.getAddCollection = (req,res,next)=>{
   const editMode = req.params.edit;
+  const noteId = req.params.noteId;
  Collection.find().then(collections=>{
   res.render("add-to-collection", {
     pageTitle: "Add To Collection",
     path:"/",
     collections: collections,
+    noteId: noteId,
     editing: editMode,
   });
  })
 }
 
 exports.postAddCollection = (req,res,next)=>{
-  res.render("add-to-collection", {
-    pageTitle: "Add To Collection",
-    path:"/",
-  });
+  const noteId = req.body.noteId;
+  const collectionId = req.body.collection;
+  Note.findById(noteId)
+    .then((note) => {
+      return note;
+    })
+    .then((note) => {
+      Collection.findById(collectionId).then((collection) => {
+        return collection.addNote(note);
+      });
+    })
+    .then(() => {
+     res.redirect('/collection');
+    })
+    .catch((error) => console.log(error));
 }
