@@ -8,8 +8,16 @@
             <hr>
             <ul>
                 <% collection.notes.forEach(item => { %>
-                    <li class="orders_products-item">Title: <%= item.note.title %> </li>
-                    <li class="orders_products-item">Description: <%= item.note.description %></li>
+                    <div>
+                        <li class="orders_products-item">Title: <%= item.note.title %> </li>
+                        <li class="orders_products-item">Description: <%= item.note.description %></li>
+                        <form action="/collection/delete-note" method="POST">
+                            <input type="hidden" value="<%= item.note._id %>" name="noteId">
+                            <input type="hidden" value="<%= collection._id %>" name="collectionId">
+
+                            <button class="btn" type="submit">Delete Note</button>
+                        </form>
+                    </div>
                     <% }); %>
             </ul>
         </main>

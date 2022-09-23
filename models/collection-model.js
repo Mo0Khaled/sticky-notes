@@ -41,7 +41,7 @@ collectionSchema.methods.addNote = function(note){
 }
 collectionSchema.methods.removeNote = function(noteId){
     const updatedNotes = this.notes.filter(item=>{
-        return item.note._id.toString() != note.toString();
+        return item.note._id.toString() != noteId.toString();
     });
     this.notes = updatedNotes;
     return this.save();

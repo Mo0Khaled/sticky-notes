@@ -17,5 +17,6 @@ router.post("/edit-collection",collectionController.postEditCollection);
 router.get("/:collectionId",collectionController.getCollectionDetails);
 
 router.post("/delete-collection", collectionController.postDeleteCollection);
+router.post("/delete-note", collectionController.postDeleteNote);
 
 exports.routes = router;

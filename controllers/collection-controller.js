@@ -78,3 +78,17 @@ exports.postDeleteCollection = (req, res, next) => {
     })
     .catch((error) => console.log(error));
 };
+
+exports.postDeleteNote = (req, res, next) => {
+    const collectionId = req.body.collectionId;
+    const noteId = req.body.noteId;
+
+    Collection.findById(collectionId)
+      .then((collection) => {
+        return collection.removeNote(noteId);
+      }).then(()=>{
+      res.redirect("/collection");
+      })
+      .catch((error) => console.log(error));
+  };
+  
